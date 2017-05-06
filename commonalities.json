@@ -1,0 +1,122 @@
+[
+  {
+    "story_invitation": "Tell a story about why you eat food the way you do, or how it has affected you.",
+    "id": "d175e833-d893-47f9-9c68-a3c68c467aa6",
+    "statements": {
+      "ed63feaf-6f9d-4827-9779-2005013bbfce": {
+        "text": "I am a vegan",
+        "weight": 3
+      },
+      "12a785bb-5359-400d-8e8c-a25d1c2efbc8": {
+        "text": "I am gluten intolerant",
+        "weight": 2
+      },
+      "c31123a9-6cc3-4aa2-ab96-48f2d47b9036": {
+        "text": "I am a vegetarian",
+        "weight": 1
+      }
+    }
+  }, {
+    "story_invitation": "Tell a story about how your experiences in the military has affected you.",
+    "id": "73acdbeb-2dab-484f-9e48-705e6ecc23aa",
+    "statements": {
+      "XXXX": {
+        "text": "I have served in the military",
+        "weight": 3
+      }
+    }
+  }, {
+    "story_invitation": "Tell a story about where you grew up in, and how it has affected you.",
+    "id": "2d8d126b-56d5-431f-9553-69b9570c2786",
+    "statements": {
+      "e1dfebdd-5d8d-43bd-a4ca-6c2f40843196": {
+        "text": "I grew up on the countryside.",
+        "weight": 1
+      },
+      "85573345-1deb-43f2-a041-1ca4185a5ad6": {
+        "text": "I grew up in a city",
+        "weight": 1
+      },
+      "68dee250-bc1e-43f3-afa6-199fd7a24913": {
+        "text": "I grew up in a wealthy neighborhood",
+        "weight": 2
+      },
+      "05d58b9a-8adc-4231-a522-937c1c4b234f": {
+        "text": "I grew up in a poor neighborhood",
+        "weight": 2
+      },
+      "ff696aa2-8182-497b-8d23-5b564b53db50": {
+        "text": "We moved around a lot",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Would you like to share a story about your relationship with your siblings?",
+    "id": "745f8136-c1ca-46fd-b9e4-3fd4fd2e9190",
+    "statements": {
+      "a8782369-7b4d-493d-b7bb-adfdb33cb1b9": {
+        "text": "All my siblings are younger than me.",
+        "weight": 2
+      },
+      "b0234c2f-a1b2-4664-8585-a420dca8d29b": {
+        "text": "All my siblings are older than me.",
+        "weight": 2
+      },
+      "74b06a2f-8e71-418f-bf3b-a573c8eea972": {
+        "text": "I have very strong relationship with a sibling.",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you share how the loss of a parent as affected you?",
+    "id": "a3d9c2b4-ff41-40ea-b698-60796e58e56e",
+    "statements": {
+      "6503c588-6c1f-4a20-a897-5e878f300d04": {
+        "text": "One of my parents is diseased",
+        "weight": 2
+      },
+      "f18d998e-668a-4db4-81e1-7bada9407c72": {
+        "text": "Both of my parents are diseased",
+        "weight": 3
+      }
+    }
+  }, {
+    "story_invitation": "Would you like to share a story from your life about your relationship with your parents?",
+    "id": "b0c61242-6b1f-4d89-a47c-b9ec6876e092",
+    "statements": {
+      "56c6b240-77b7-4764-85b8-a7f4fe3faac0": {
+        "text": "I have a very stong relationship with my mother.",
+        "weight": 2
+      },
+      "c8838bb1-35d6-4784-8245-5eb1e4a7613b": {
+        "text": "I have a very stong relationship with my father.",
+        "weight": 2
+      },
+      "0b5320c3-3f46-4e85-8069-7158c01d52b7": {
+        "text": "I have a bad relationship with my mother.",
+        "weight": 2
+      },
+      "039e69f9-982f-4d03-8bcb-b16f3437cf0a": {
+        "text": "I have a bad relationship with my father.",
+        "weight": 2
+      },
+      "6264cb29-8fb3-43cf-9f1c-d31432d83b3d": {
+        "text": "I grew up with a single parent",
+        "weight": 3
+      },
+      "646efdf4-8ad2-481c-9a4d-df81244949dd": {
+        "text": "My parents are divorced",
+        "weight": 2
+      }
+    }
+  }/*, {
+    "story_invitation": "",
+    "id": "YYY",
+    "statements": {
+      "XXXX": {
+        "text": "",
+        "weight": 0
+      }
+    }
+  }*/
+]
