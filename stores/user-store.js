@@ -24,7 +24,7 @@ class UserStore extends Store {
    */
   insert(props) {
     const user = new User(props);
-    console.log(`Inserting User ${JSON.stringify(user)}`);
+    // console.log(`Inserting User ${JSON.stringify(user)}`);
 
     this.set(props.id, user);
     return user;

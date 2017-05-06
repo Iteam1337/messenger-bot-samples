@@ -19,10 +19,10 @@ const handleNewGiftSelected = (senderId, giftId) => {
 };
 
 const getUser = (senderId) => {
-  const user = UserStore.get(senderId);
+  let user = UserStore.get(senderId);
 
   if (!user) {
-    const user = UserStore.insert({
+    user = UserStore.insert({
       id: senderId,
       isTalkingToMatch: false
     });
@@ -31,16 +31,14 @@ const getUser = (senderId) => {
   return user;
 };
 
-const handleFindAMatch = (senderId) => {
-  const user = getUser(senderId);
-
+const handleFindAMatch = (user) => {
   //get a match
-  const otherUser = UserStore.getAnyOther(senderId);
-  console.log('my user', senderId);
+  const otherUser = UserStore.getAnyOther(user.senderId);
   
   if (!otherUser) {
     console.log('No other user found');
-    //send message, looking for a match
+    sendApi.sendMessage(user.id, 'Searching for your opposite');
+
     return false;
   }
   else {
@@ -51,11 +49,17 @@ const handleFindAMatch = (senderId) => {
     otherUser.setMatch(user.id);
 
     //send message to both
-    sendApi.sendWelcomeMessage(user.id);
-    sendApi.sendWelcomeMessage(otherUser.id);
+    sendApi.sendMessage(user.id, 'Wow! You have a match! Please introduce yourself :)');
+    sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Please introduce yourself :)');
     
     return true;
   }
+};
+
+const proxyMessage = (user, message) => {
+  const otherUser = UserStore.get(user.matchId);
+
+  sendApi.sendMessage(otherUser.id, 'Your opposite says: ' + message);
 };
 
 /*
@@ -103,15 +107,22 @@ const handleReceiveMessage = (event) => {
   const message = event.message;
   const senderId = event.sender.id;
 
-  console.log('message', message);
+  console.log('received message', message.text);
+
 
   // It's good practice to send the user a read receipt so they know
   // the bot has seen the message. This can prevent a user
   // spamming the bot if the requests take some time to return.
   sendApi.sendReadReceipt(senderId);
 
-  if (message.text && message.text == 'Match') {
-    handleFindAMatch(senderId);
+  const user = getUser(senderId);
+  if (user.isTalkingToMatch) {
+    if (message) {
+      //send to the other part
+      proxyMessage(user, message.text); 
+    }
+  } else {
+    handleFindAMatch(user);
   }
 
   // if (message.text) { sendApi.sendWelcomeMessage(senderId); }

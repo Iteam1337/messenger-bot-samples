@@ -43,7 +43,7 @@ const messageToJSON = (recipientId, messagePayload) => {
 };
 
 // Send one or more messages using the Send API.
-const sendMessage = (recipientId, messagePayloads) => {
+const sendMessageObject = (recipientId, messagePayloads) => {
   const messagePayloadArray = castArray(messagePayloads)
     .map((messagePayload) => messageToJSON(recipientId, messagePayload));
 
@@ -54,8 +54,8 @@ const sendMessage = (recipientId, messagePayloads) => {
   ]);
 };
 
-const sendWelcomeMessage = (recipientId, messagePayloads) => {
-  sendMessage(recipientId,  { text: 'Hej kära du!'});
+const sendMessage = (recipientId, message) => {
+  sendMessageObject(recipientId,  { text: message});
 }
 
 // Send a read receipt to indicate the message has been read
@@ -72,11 +72,11 @@ const sendReadReceipt = (recipientId) => {
 
 // Send the initial message telling the user about the promotion.
 const sendHelloRewardMessage = (recipientId) =>
-  sendMessage(recipientId, messages.helloRewardMessage);
+  sendMessageObject(recipientId, messages.helloRewardMessage);
 
 // Send a message indicating to a user that their preferences have changed.
 const sendPreferencesChangedMessage = (recipientId) => {
-  sendMessage(
+  sendMessageObject(
     recipientId,
     [
       messages.preferencesUpdatedMessage,
@@ -87,7 +87,7 @@ const sendPreferencesChangedMessage = (recipientId) => {
 
 // Send a message displaying the gifts a user can choose from.
 const sendChooseGiftMessage = (recipientId) => {
-  sendMessage(
+  sendMessageObject(
     recipientId,
     [
       messages.giftOptionsText,
@@ -97,13 +97,12 @@ const sendChooseGiftMessage = (recipientId) => {
 
 // Send a message that a users preffered gift has changed.
 const sendGiftChangedMessage = (recipientId) =>
-  sendMessage(recipientId, messages.giftChangedMessage(recipientId));
+  sendMessageObject(recipientId, messages.giftChangedMessage(recipientId));
 
 export default {
   sendMessage,
   sendReadReceipt,
   sendHelloRewardMessage,
-  sendWelcomeMessage,
   sendPreferencesChangedMessage,
   sendChooseGiftMessage,
   sendGiftChangedMessage,
