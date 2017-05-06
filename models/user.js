@@ -49,5 +49,12 @@ export default class User {
     this.id = id;
     this.gender = gender;
     this.questions = questions;
+    this.isTalkingToMatch = false;
   }
+
+  setMatch(matchId) {
+    this.matchId = matchId
+    this.isTalkingToMatch = true
+  }
+
 }

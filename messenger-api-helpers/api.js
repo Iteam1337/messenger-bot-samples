@@ -40,6 +40,7 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
     return;
   }
 
+  console.log('page access token', process.env.PAGE_ACCESS_TOKEN);
   // ensure query parameters have a PAGE_ACCESS_TOKEN value
   /* eslint-disable camelcase */
   const query = Object.assign({access_token: PAGE_ACCESS_TOKEN}, queryParams);
@@ -47,6 +48,13 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
 
   // ready the first message in the array for send.
   const [messageToSend, ...queue] = castArray(messageDataArray);
+  console.log('request message', {
+    uri: `https://graph.facebook.com/v2.6/me/${endPoint}`,
+    qs: query,
+    method: 'POST',
+    json: messageToSend,
+
+  });
   request({
     uri: `https://graph.facebook.com/v2.6/me/${endPoint}`,
     qs: query,

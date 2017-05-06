@@ -16,6 +16,18 @@ export default class Store {
     this.data = new Map();
   }
 
+  getAnyOther(id) {
+    var iterator = this.data.values();
+
+    for (var user of iterator) {
+      console.log('found user', user);
+      if (user.id != id) {
+        console.log('Found user', user);
+        return user;
+      }
+    }
+  }
+
   /**
    * Get item in store by case insensitive id
    *
