@@ -31,7 +31,7 @@ const answerQuestionsButton = (userId, questionPackId) => {
   let text;
   switch (questionPackId) {
   case '0':
-    text = 'Let me know some things about you to get us started';
+    text = 'I’m here to guide you through making meaningful connections with people different from you. You will get to answer a couple of questions so that I can get to know you better. After that, I will find someone for you to chat with who have very different values from you, but is more alike than you might think. Want to start answering some questions? ';
     break;
   case '1':
     text = 'Very interesting, I would love to know some more!';
@@ -58,7 +58,7 @@ const answerQuestionsButton = (userId, questionPackId) => {
           {
             type: 'web_url',
             url: `${SERVER_URL}/${userId}/${questionPackId}`,
-            title: 'Lets do it!',
+            title: 'Yes, let’s get started',
             webview_height_ratio: 'tall',
           },
         ],

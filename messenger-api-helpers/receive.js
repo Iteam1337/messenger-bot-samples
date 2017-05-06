@@ -32,7 +32,7 @@ const handleFindAMatch = (userId) => {
 
   if (!otherUser) {
     console.log('No other user found');
-    sendApi.sendMessage(user.id, 'Great job! I will now start searching for your opposite...');
+    sendApi.sendMessage(user.id, 'I see you answered all the questions, great job! I’ll start searching for your match right away.');
 
     return false;
   }
@@ -48,8 +48,8 @@ const handleFindAMatch = (userId) => {
     // send message to both
 
   setTimeout(() => {
-    sendApi.sendMessage(user.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
-    sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
+    sendApi.sendMessage(user.id, 'Yippie! It’s a match! You’re now connected to your opposite. Why don’t you introduce yourselves?');
+    sendApi.sendMessage(otherUser.id, 'Yippie! It’s a match! You’re now connected to your opposite. Why don’t you introduce yourselves?');
 
     setTimeout(() => {
       sendApi.sendMessage(user.id, 'Let’s get you two introduced! I have a little exercise - let’s see if you recognize yourselves!');
