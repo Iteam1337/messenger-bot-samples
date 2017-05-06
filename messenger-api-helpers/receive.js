@@ -50,6 +50,18 @@ const handleFindAMatch = (userId) => {
   setTimeout(() => {
     sendApi.sendMessage(user.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
     sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
+
+    setTimeout(() => {
+      sendApi.sendMessage(user.id, 'Let’s get you two introduced! I have a little exercise - let’s see if you recognize yourselves!');
+      setTimeout(() => {
+        sendApi.sendMessage(user.id, 'One of you value self-direction highly: independent thought and action; choosing, creating, exploring. This person is more open to change. The other value tradition highly: Respect, commitment, and acceptance of the customs and ideas of traditional culture or religion. This person is more conservative. Who is who? What life experiences do you think have played the biggest role in you identifying with these values?');
+      }, 2000);
+
+      sendApi.sendMessage(otherUser.id, 'Let’s get you two introduced! I have a little exercise - let’s see if you recognize yourselves!');
+      setTimeout(() => {
+        sendApi.sendMessage(otherUser.id, 'One of you value self-direction highly: independent thought and action; choosing, creating, exploring. This person is more open to change. The other value tradition highly: Respect, commitment, and acceptance of the customs and ideas of traditional culture or religion. This person is more conservative. Who is who? What life experiences do you think have played the biggest role in you identifying with these values?');
+      }, 2000);
+    }, 45000);
   }, 5000);
 
   return true;
