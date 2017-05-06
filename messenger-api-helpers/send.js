@@ -54,6 +54,10 @@ const sendMessage = (recipientId, messagePayloads) => {
   ]);
 };
 
+const sendWelcomeMessage = (recipientId, messagePayloads) => {
+  sendMessage(recipientId,  {text: 'Hej kära du!'});
+};
+
 // Send a read receipt to indicate the message has been read
 const sendReadReceipt = (recipientId) => {
   const messageData = {
@@ -64,15 +68,6 @@ const sendReadReceipt = (recipientId) => {
   };
 
   api.callMessagesAPI(messageData);
-};
-
-const sendWelcomeMessage = (recipientId) => {
-  sendMessage(
-    recipientId,
-    [
-      'welcome',
-    ],
-  );
 };
 
 const sendAnswersChangedMessage = (recipientId) => {

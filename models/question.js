@@ -39,8 +39,9 @@ export default class Question {
    * @param {string} description - Description of the gift.
    * @param {string} category - Category of this gift (`Gift.CATEGORIES`).
    */
-  constructor(id, question, value = false, category) {
+  constructor(id, pack, question, value = false, category) {
     this.id = id;
+    this.pack = pack;
     this.question = question;
     this.value = value;
     this.category = category;

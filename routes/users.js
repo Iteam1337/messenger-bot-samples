@@ -14,6 +14,7 @@ import receiveApi from '../messenger-api-helpers/receive';
 
 // ===== STORES ================================================================
 import UserStore from '../stores/user-store';
+import QuestionStore from '../stores/question-store';
 
 const router = express.Router();
 
@@ -27,6 +28,18 @@ router.get('/:userID', ({params: {userID}}, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(userJSON);
 });
+
+router.get('/:userID/:questionPackId',
+  ({params: {userID, questionPackId}}, res) => {
+    const user = UserStore.get(userID) || UserStore.insert({id: userID});
+    user.questions = QuestionStore.getFromPackId(questionPackId);
+    const userJSON = JSON.stringify(user);
+
+    console.log(`GET User response: ${userJSON}`);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(userJSON);
+  });
 
 /**
  * Return gifts based on preferences,

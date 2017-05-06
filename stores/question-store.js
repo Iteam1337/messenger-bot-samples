@@ -45,6 +45,16 @@ class QuestionStore extends Store {
       .filter((question) => question.category === categoryId);
   }
 
+  getByPackId(packId) {
+    /**
+     * Maps don't have a filter method (nor map, reduce, and so on)
+     * Rather than write our own, here we convert to an Array
+     * and leverage the build-in filter method.
+     */
+    return [...this.data.values()]
+      .filter((question) => question.pack === packId);
+  }
+
   /**
    * Inserts a gift to the Store using the gifts id as the key
    *
@@ -65,6 +75,7 @@ const QUESTION_STORE = new QuestionStore();
 QUESTION_STORE.insert(
   new Question(
     'id-0',
+    '0',
     'Having a good time is important to him. ${HE_SHE} likes to “spoil” himself.',
     false,
     BENEVOLENCE,
@@ -73,6 +84,7 @@ QUESTION_STORE.insert(
 QUESTION_STORE.insert(
   new Question(
     'id-1',
+    '0',
     'It is important to ${HIM_HER} to be loyal to ${HIS_HER} friends. ${HE_SHE} wants to devote himself to people close to ${HIM_HER}.',
     false,
     BENEVOLENCE,
