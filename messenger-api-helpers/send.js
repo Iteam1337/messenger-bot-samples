@@ -43,7 +43,7 @@ const messageToJSON = (recipientId, messagePayload) => {
 };
 
 // Send one or more messages using the Send API.
-const sendMessage = (recipientId, messagePayloads) => {
+const sendMessageObject = (recipientId, messagePayloads) => {
   const messagePayloadArray = castArray(messagePayloads)
     .map((messagePayload) => messageToJSON(recipientId, messagePayload));
 
@@ -54,8 +54,8 @@ const sendMessage = (recipientId, messagePayloads) => {
   ]);
 };
 
-const sendWelcomeMessage = (recipientId, messagePayloads) => {
-  sendMessage(recipientId,  {text: 'Hej kära du!'});
+const sendMessage = (recipientId, message) => {
+  sendMessageObject(recipientId,  {text: message});
 };
 
 // Send a read receipt to indicate the message has been read
@@ -70,18 +70,7 @@ const sendReadReceipt = (recipientId) => {
   api.callMessagesAPI(messageData);
 };
 
-const sendAnswersChangedMessage = (recipientId) => {
-  sendMessage(
-    recipientId,
-    [
-      messages.sendAnswersChangedMessage,
-    ],
-  );
-};
-
 export default {
   sendMessage,
   sendReadReceipt,
-  sendAnswersChangedMessage,
-  sendWelcomeMessage,
 };
