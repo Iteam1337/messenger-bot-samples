@@ -6,6 +6,7 @@
  */
 
 // ===== MODULES ===============================================================
+import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import express from 'express';
@@ -22,6 +23,7 @@ import index from './routes/index';
 import users from './routes/users';
 import webhooks from './routes/webhooks';
 
+dotenv.config();
 const app = express();
 
 /* =============================================
@@ -87,8 +89,8 @@ ThreadSetup.setGetStarted();
    =                 Port Setup                =
    ============================================= */
 
-app.listen(app.get('port'), () => {
-  console.log('Node app is running on port', app.get('port'));
-});
+// app.listen(app.get('port'), () => {
+//   console.log('Node app is running on port', app.get('port'));
+// });
 
 module.exports = app; // eslint-disable-line
