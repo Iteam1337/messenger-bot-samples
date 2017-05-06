@@ -24,31 +24,35 @@ const getUser = (senderId) => {
   return user;
 };
 
-const handleFindAMatch = (user) => {
-  //get a match
+const handleFindAMatch = (userId) => {
+  // get a match
+  const user = getUser(userId);
+
   const otherUser = UserStore.getAnyOther(user.id);
-  
+
   if (!otherUser) {
     console.log('No other user found');
-    sendApi.sendMessage(user.id, 'Searching for your opposite');
+    sendApi.sendMessage(user.id, 'Great job! I will now start searching for your opposite...');
 
     return false;
   }
-  else {
-    console.log('User found');
-    console.log('My id', user.id);
-    console.log('Other id', otherUser.id);
 
-    //set a match
-    user.setMatch(otherUser.id);
-    otherUser.setMatch(user.id);
+  console.log('User found');
+  console.log('My id', user.id);
+  console.log('Other id', otherUser.id);
 
-    //send message to both
+    // set a match
+  user.setMatch(otherUser.id);
+  otherUser.setMatch(user.id);
+
+    // send message to both
+
+  setTimeout(() => {
     sendApi.sendMessage(user.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
     sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
-    
-    return true;
-  }
+  }, 5000);
+
+  return true;
 };
 
 const proxyMessage = (user, message) => {
@@ -103,15 +107,23 @@ const handleReceiveMessage = (event) => {
   const user = getUser(senderId);
   console.log('user', user);
 
+  const answeredQuestions = user.answers ? Object.keys(user.answers).length : 0;
+
   if (user.isTalkingToMatch) {
-    console.log(senderId + " is talking to match. Proxy message: " + message.text);
+    console.log(`${senderId} is talking to match. Proxy message: ${  message.text}`);
     if (message) {
       // send to the other part
       proxyMessage(user, message.text);
     }
+  } else if (answeredQuestions < 20) {
+    console.log(answeredQuestions);
+
+    if (answeredQuestions === 0) {
+      sendApi.sendAnswerQuestionsMessage(user.id, 0);
+    }
   } else {
-    console.log(senderId + " don't have a match. Getting one...");
-    handleFindAMatch(user);
+    console.log(`${senderId  } don't have a match. Getting one...`);
+    handleFindAMatch(user.id);
   }
 
   // if (message.text) { sendApi.sendWelcomeMessage(senderId); }
@@ -120,4 +132,5 @@ const handleReceiveMessage = (event) => {
 export default {
   handleReceivePostback,
   handleReceiveMessage,
+  handleFindAMatch,
 };

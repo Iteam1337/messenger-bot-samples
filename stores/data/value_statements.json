@@ -1,106 +1,127 @@
 [
  {
    "index": 12,
+   "pack": "2",
    "trait": "benevolence",
    "text": "It's very important to ${HIM_HER} to help people around ${HIM_HER}. ${HE_SHE} wants to care for other people."
  },
  {
    "index": 18,
+   "pack": "3",
    "trait": "benevolence",
    "text": "It is important to ${HIM_HER} to be loyal to ${HIS_HER} friends. ${HE_SHE} wants to devote himself to people close to ${HIM_HER}."
  },
  {
    "index": 3,
+   "pack": "0",
    "trait": "universalism",
    "text": "${HE_SHE} thinks it is important that every person in the ${HE_SHE} world be treated equally. ${HE_SHE} wants justice for everybody, even for people ${HE_SHE} doesn’t know."
  },
  {
    "index": 8,
+   "pack": "1",
    "trait": "universalism",
    "text": "It is important to ${HIM_HER} to listen to people who are different from ${HIM_HER}. Even when ${HE_SHE} disagrees with them, ${HE_SHE} still wants to understand them."
  },
  {
    "index": 19,
+   "pack": "3",
    "trait": "universalism",
    "text": "${HE_SHE} strongly believes that people should care for nature. Looking after t${HE_SHE} environment is important to ${HIM_HER}."
  },
  {
    "index": 1,
+   "pack": "0",
    "trait": "selfdirection",
    "text": "Thinking up new ideas and being creative is important to ${HIM_HER}. ${HE_SHE} likes to do things in ${HIS_HER} own original way."
  },
  {
    "index": 11,
+   "pack": "2",
    "trait": "selfdirection",
    "text": "It is important to ${HIM_HER} to make ${HIS_HER} own decisions about what ${HE_SHE} does. ${HE_SHE} likes to be free to plan and to choose ${HIS_HER} activities for himself."
  },
  {
    "index": 6,
+   "pack": "1",
    "trait": "stimulaton",
    "text": "${HE_SHE} likes surprises and is always looking for new things to do. ${HE_SHE} thinks it is important to do lots of different things in life."
  },
  {
    "index": 15,
+   "pack": "2",
    "trait": "stimulaton",
    "text": "${HE_SHE} looks for adventures and likes to take risks. ${HE_SHE} wants to have an exciting life."
  },
  {
    "index": 10,
+   "pack": "2",
    "trait": "hedonism",
    "text": "Having a good time is important to him. ${HE_SHE} likes to “spoil” himself."
  },
  {
    "index": 21,
+   "pack": "3",
    "trait": "hedonism",
    "text": "${HE_SHE} seeks every chance ${HE_SHE} can to have fun. It is important to ${HIM_HER} to do things that give ${HIM_HER} pleasure."
  },
  {
    "index": 4,
+   "pack": "0",
    "trait": "achievement",
    "text": "It is very important to ${HIM_HER} to show ${HIS_HER} abilities. ${HE_SHE} wants people to admire what ${HE_SHE} does."
  },
  {
    "index": 13,
+   "pack": "2",
    "trait": "achievement",
    "text": "Being very successful is important to him. ${HE_SHE} likes to impress other people."
  },
  {
    "index": 2,
+   "pack": "0",
    "trait": "power",
    "text": "It is important to ${HIM_HER} to be rich. ${HE_SHE} wants to have a lot of money and expensive things."
  },
  {
    "index": 17,
+   "pack": "3",
    "trait": "power",
    "text": "It is important to ${HIM_HER} to be in charge and tell others what to do. ${HE_SHE} wants people to do what ${HE_SHE} says."
  },
  {
    "index": 5,
+   "pack": "0",
    "trait": "security",
    "text": "It is important to ${HIM_HER} to live in secure surroundings. ${HE_SHE} avoids anything that might endanger ${HIS_HER} safety."
  },
  {
    "index": 14,
+   "pack": "2",
    "trait": "security",
    "text": "It is very important to ${HIM_HER} that ${HIS_HER} country be safe from threats from within and without. ${HE_SHE} is concerned that social order be protected."
  },
  {
    "index": 7,
+   "pack": "1",
    "trait": "conformity",
    "text": "${HE_SHE} believes that people should do what they're told. ${HE_SHE} thinks people should follow rules at all times, even when no-one is watching."
  },
  {
    "index": 16,
+   "pack": "3",
    "trait": "conformity",
    "text": "It is important to ${HIM_HER} always to behave properly. ${HE_SHE} wants to avoid doing anything people would say is wrong."
  },
  {
    "index": 9,
+   "pack": "1",
    "trait": "tradition",
    "text": "${HE_SHE} thinks it's important not to ask for more than what you have. ${HE_SHE} believes that people should be satisfied with what they have."
  },
  {
    "index": 20,
+   "pack": "3",
    "trait": "tradition",
    "text": "Religious belief is important to him. ${HE_SHE} tries hard to do what ${HIS_HER} religion requires. "
  }

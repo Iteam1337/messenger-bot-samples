@@ -10,6 +10,7 @@ import castArray from 'lodash/castArray';
 
 // ===== MESSENGER =============================================================
 import api from './api';
+import receiveApi from './receive';
 import messages from './messages';
 
 // Turns typing indicator on.
@@ -79,8 +80,31 @@ const sendAnswerQuestionsMessage = (recipientId, questionsIndex) => {
   );
 };
 
+const sendAnsweredQuestionsMessage = (user) => {
+  const answeredQuestions = Object.keys(user.answers).length;
+  let index;
+  if (answeredQuestions < 1) {
+    index = 0;
+  } else if (answeredQuestions < 5) {
+    index = 1;
+  } else if (answeredQuestions < 10) {
+    index = 2;
+  } else if (answeredQuestions < 15) {
+    index = 3;
+  } else if (answeredQuestions < 22) {
+    index = 4;
+  }
+
+  if (index < 1) {
+    sendAnswerQuestionsMessage(user.id, index);
+  } else {
+    receiveApi.handleFindAMatch(user.id);
+  }
+};
+
 export default {
   sendMessage,
   sendReadReceipt,
   sendAnswerQuestionsMessage,
+  sendAnsweredQuestionsMessage,
 };

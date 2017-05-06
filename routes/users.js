@@ -55,7 +55,7 @@ router.put('/:userID', ({body, params: {userID}}, res) => {
 
   console.log('USER', UserStore.get(userID));
 
-  sendApi.sendAnsweredQuestionsMessage(userID);
+  sendApi.sendAnsweredQuestionsMessage(UserStore.get(userID));
 });
 
 export default router;

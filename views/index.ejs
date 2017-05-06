@@ -12,13 +12,14 @@
   <body>
     <div id="content"></div>
     <script>
-     <% if (locals.questionPackId) { %>
+     <% if (locals.questionPackId && locals.userId) { %>
      const questionPackId = JSON.parse('<%- locals.questionPackId  %>');
+     const userId = JSON.parse('<%- locals.userId  %>');
      <% } else { %>
-     const questionPackId = null;
+     const userId = null;
      <% } %>
      <% if (demo) { %>
-     window.attachApp("demo", questionPackId);
+     window.attachApp(userId, questionPackId);
      <% } else { %>
      window.extAsyncInit = function() {
        // the Messenger Extensions JS SDK is done loading

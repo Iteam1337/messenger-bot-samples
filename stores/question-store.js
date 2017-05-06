@@ -10,6 +10,7 @@ import Store from './store';
 
 // ===== MODELS ================================================================
 import Question from '../models/question';
+import questions from './data/value_statements.json';
 
 const SERVER_URL = process.env.SERVER_URL;
 const [
@@ -71,69 +72,20 @@ class QuestionStore extends Store {
  */
 const QUESTION_STORE = new QuestionStore();
 
-/* eslint-disable max-len */
-QUESTION_STORE.insert(
-  new Question(
-    'id-0',
-    '0',
-    'It\'s very important to ${HIM_HER} to help t${HE_SHE} people around ${HIM_HER}. ${HE_SHE} wants to care for other people',
+questions.forEach((question) => {
+  console.log(question);
+  const questionObj = new Question(
+    `value_statement_${question.index}`,
+    question.pack,
+    question.text,
     false,
-    BENEVOLENCE,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-1',
-    '1',
-    'It is important to ${HIM_HER} to be loyal to ${HIS_HER} friends. ${HE_SHE} wants to devote himself to people close to ${HIM_HER}',
-    false,
-    BENEVOLENCE,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-2',
-    '2',
-    '${HE_SHE} thinks it is important that every person in t${HE_SHE} world be treated equally. ${HE_SHE} wants justice for everybody, even for people ${HE_SHE} doesn’t know.',
-    false,
-    UNIVERSALISM,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-3',
-    '3',
-    'It is important to ${HIM_HER} to listen to people who are different from ${HIM_HER}. Even when ${HE_SHE} disagrees with them, ${HE_SHE} still wants to understand them.',
-    false,
-    UNIVERSALISM,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-4',
-    '4',
-    '${HE_SHE} strongly believes that people should care for nature. Looking after t${HE_SHE} environment is important to ${HIM_HER}',
-    false,
-    UNIVERSALISM,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-5',
-    '5',
-    'Thinking up new ideas and being creative is important to ${HIM_HER}. ${HE_SHE} likes to do things in ${HIS_HER} own original way.',
-    false,
-    SELFDIRECTION,
-  ));
-
-QUESTION_STORE.insert(
-  new Question(
-    'id-6',
-    '6',
-    'It is important to ${HIM_HER} to make ${HIS_HER} own decisions about what ${HE_SHE} does. ${HE_SHE} likes to be free to plan and to choose ${HIS_HER} activities for himself.',
-    false,
-    SELFDIRECTION,
-  ));
+    question.trait,
+  );
+  console.log(questionObj);
+  QUESTION_STORE.insert(
+    questionObj
+  );
+});
 
 /* eslint-enable max-len */
 

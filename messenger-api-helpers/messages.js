@@ -28,12 +28,32 @@ console.log('SERVER_URL', SERVER_URL);
  */
 
 const answerQuestionsButton = (userId, questionPackId) => {
+  let text;
+  switch (questionPackId) {
+  case '0':
+    text = 'Let me know some things about you to get us started';
+    break;
+  case '1':
+    text = 'Very interesting, I would love to know some more!';
+    break;
+  case '2':
+    text = 'Thanks, here are some more questions.';
+    break;
+  case '3':
+    text = 'Getting closer, a few more questions!';
+    break;
+  case '4':
+    text = 'Almost there, here are some final questions to wrap things up.';
+    break;
+  default:
+    text = 'Let me know somethings about you to get us started';
+  }
   return {
     attachment: {
       type: 'template',
       payload: {
         template_type: 'button',
-        text: 'Let me know somethings about you to get us started',
+        text,
         buttons: [
           {
             type: 'web_url',

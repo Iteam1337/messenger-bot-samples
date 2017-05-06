@@ -17,16 +17,19 @@ export default class Store {
   }
 
   getAnyOther(id) {
-    var iterator = this.data.values();
+    const iterator = this.data.values();
 
-    for (var user of iterator) {
-
+    let match;
+    for (const user of iterator) {
       console.log('user', user);
-      if (user.id != id && !user.matchId) {
+      const answers = user.answers ? Object.keys(user.answers).length : 0;
+      if (user.id !== id && !user.matchId && answers > 3) {
         // console.log('Found user', user);
-        return user;
+        match = user;
       }
     }
+    console.log('FOUND A MATCH!', match);
+    return match;
   }
 
   /**
