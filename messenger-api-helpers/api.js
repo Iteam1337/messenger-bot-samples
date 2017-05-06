@@ -52,7 +52,6 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
     qs: query,
     method: 'POST',
     json: messageToSend,
-
   }, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       // Message has been successfully received by Facebook.

@@ -9,23 +9,22 @@
 import express from 'express';
 
 // ===== STORES ================================================================
-import GiftStore from '../stores/gift-store';
+import QuestionStore from '../stores/question-store';
 
 const router = express.Router();
 
 // Get Gift page
-router.get('/:giftId', ({params: {giftId}}, res) => {
-  const gift = GiftStore.get(giftId);
+router.get('/:questionCategoryId', ({params: {questionCategoryId}}, res) => {
+  const questions = QuestionStore.getByCategoryId(questionCategoryId);
 
-  const giftJSON = JSON.stringify(gift);
-  console.log(`GET Gift response: ${giftJSON}`);
+  const questionJSON = JSON.stringify(questions);
+  console.log(`GET Gift response: ${questionJSON}`);
 
   res.render(
     './index',
     {
       demo: process.env.DEMO,
-      gift: giftJSON,
-      title: gift.name,
+      questions: questionJSON,
     }
   );
 });

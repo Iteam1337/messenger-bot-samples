@@ -48,7 +48,7 @@ router.put('/:userID', ({body, params: {userID}}, res) => {
 /**
  * Update a users selected gift,
  */
-router.put('/:userID/gift/:giftID', ({params: {userID, giftID}}, res) => {
+router.put('/:userID/question/:question', ({params: {userID, giftID}}, res) => {
   console.log('PUT User Gift response:', {userID, giftID});
 
   res.sendStatus(204);

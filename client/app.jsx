@@ -21,35 +21,22 @@ import 'whatwg-fetch';
 import {
   Button,
   ButtonArea,
-  CellBody,
-  CellFooter,
-  CellHeader,
   CellsTitle,
   Form,
-  FormCell,
-  Slider,
-  Switch,
 } from 'react-weui';
 
 /* ----------  Internal Components  ---------- */
-
-import ArrivalPeriod from './arrival-period.jsx';
-import Environment from './environment.jsx';
-import GiftCategory from './gift-category.jsx';
+import Answer from './answer.jsx';
 import Loading from './loading.jsx';
-import SkinType from './skin-type.jsx';
 
 /* ----------  Helpers  ---------- */
 
 import WebviewControls from '../messenger-api-helpers/webview-controls';
-import {dateString} from '../utils/date-string-format';
 
 /* ----------  Models  ---------- */
 
-import Gift from '../models/gift';
-import User from '../models/user';
-
-const {ENVIRONMENTS} = User;
+import Question from '../models/question';
+// import User from '../models/user';
 
 /* =============================================
    =            React Application              =
@@ -57,79 +44,23 @@ const {ENVIRONMENTS} = User;
 
 export default class App extends React.PureComponent {
 
-  /* =============================================
-     =               Configuration               =
-     ============================================= */
-
-  /* ----------  Top-level App Constants  ---------- */
-
-  static dateConfig = {
-    month: 'long',
-    day: 'numeric',
-  }
-
-  /**
-   * Keeping the display labels in the front end as a separation of concerns
-   * The actual values are being imported later via static attributes on
-   * the models
-   *
-   * We have introduced an ordering dependency, but this is also the order that
-   * we wish to display the options in the UI.
-   */
-
-  static giftCategories = [
-    {
-      title: 'Moisturizers',
-      subtitle: 'Daily moisturizers & night creams',
-      image: 'moisturizers-filtered-cropped.jpg',
-    },
-    {
-      title: 'Cleansers',
-      subtitle: 'Face washes, wipes & exfoliators',
-      image: 'cleansers-filtered-cropped.jpg',
-    },
-    {
-      title: 'Masks',
-      subtitle: 'Face & sheet masks',
-      image: 'masks-filtered-cropped.jpg',
-    },
-    {
-      title: 'Lip Treatments',
-      subtitle: 'Balms & sunscreen',
-      image: 'lip-treatments-filtered-cropped.jpg',
-    },
-  ]
-
-  static skinTypes = [
-    'Acne or blemishes',
-    'Oiliness',
-    'Loss of tone',
-    'Wrinkles',
-    'Sensitivity',
-    'Dehydration (tight with oil)',
-    'Dryness (flaky with no oil)',
-    'Scars',
-  ]
-
-  static arrivalPeriods = [
-    'Last 30 days',
-    'Last 60 days',
-    'Coming soon',
-  ]
-
   /* ----------  React Configuration  ---------- */
 
   static propTypes = {
     userId: React.PropTypes.string.isRequired,
   }
 
+  static answers = [
+    'very much like me',
+    'like me',
+    'somewhat like me',
+    'a little like me',
+    'not like me',
+    'not like me a tall',
+  ];
+
   state = {
-    dateOfBirth: null,
-    giftCategory: null,
-    arrivalPeriod: null,
-    environment: null,
-    skinTypes: [],
-    persist: true,
+    questions: null,
   }
 
   /* =============================================
@@ -165,7 +96,7 @@ export default class App extends React.PureComponent {
 
         this.setState({
           ...jsonResponse,
-          skinTypes: new Set(jsonResponse.skinTypes),
+          questions: new Set(jsonResponse.questions),
         });
       }).catch((err) => console.error('Error pulling data', err));
   }
@@ -199,52 +130,15 @@ export default class App extends React.PureComponent {
   jsonState() {
     return JSON.stringify({
       ...this.state,
-      skinTypes: [...this.state.skinTypes],
+      questions: [...this.state.questions],
     });
   }
 
   /* ----------  State Handlers  ---------- */
 
-  setGiftCategory(giftCategory) {
-    console.log(`Gift Category: ${giftCategory}`);
-    this.setState({giftCategory});
-  }
-
-  setArrivalPeriod(arrivalPeriod) {
-    console.log(`Arrival Period: ${arrivalPeriod}`);
-    this.setState({arrivalPeriod});
-  }
-
-  setEnvironment(envIndex) {
-    const environment = ENVIRONMENTS[envIndex];
-    console.log(`Environment: ${environment}`);
-    this.setState({environment});
-  }
-
-  addSkinType(type) {
-    console.log(`Add skin type: ${type}`);
-    const oldSkinTypes = this.state.skinTypes;
-    const skinTypes = new Set(oldSkinTypes);
-    skinTypes.add(type);
-    this.setState({skinTypes});
-  }
-
-  removeSkinType(type) {
-    console.log(`Remove skin type: ${type}`);
-    const oldSkinTypes = this.state.skinTypes;
-    const skinTypes = new Set(oldSkinTypes);
-    skinTypes.delete(type);
-    this.setState({skinTypes});
-  }
-
-  setPersist(persist) {
-    console.log(`Persist: ${JSON.stringify(persist)}`);
-    this.setState({persist});
-  }
-
-  setDateOfBirth(dateOfBirth) {
-    console.log(`Set date of birth: ${dateOfBirth}`);
-    this.setState({dateOfBirth});
+  setAnswer(question, index) {
+    console.log(`Set Answer: ${index}`);
+    this.setState({index});
   }
 
   /* =============================================
@@ -265,140 +159,34 @@ export default class App extends React.PureComponent {
      * If waiting for data, just show the loading spinner
      * and skip the rest of this function
      */
-    if (!this.state.giftCategory) {
+    if (!this.state.questions) {
       return <Loading />;
     }
-
-    /* ----------  Setup Sections (anything dynamic or repeated) ---------- */
-
-    const skinTypes = App.skinTypes.map((label, index) => {
-      const value = User.SKIN_TYPES[index];
-      const checked = this.state.skinTypes.has(value);
-
-      return (
-        <SkinType
-          key={value}
-          value={value}
-          label={label}
-          checked={checked}
-          addSkinType={this.addSkinType.bind(this)}
-          removeSkinType={this.removeSkinType.bind(this)}
-        />
-      );
-    });
-
-    const giftCategories =
-      App.giftCategories.map(({title, subtitle, image}, index) => {
-        const value = Gift.CATEGORIES[index];
-
-        return (
-          <GiftCategory
-            key={value}
-            title={title}
-            subtitle={subtitle}
-            image={image}
-            selected={value === this.state.giftCategory}
-            setGiftCategory={() => this.setGiftCategory(value)}
-          />
-        );
-      });
-
-    const arrivalPeriods = App.arrivalPeriods.map((label, index) => {
-      const value = User.ARRIVAL_PERIODS[index];
-      return (
-        <ArrivalPeriod
-          key={label}
-          label={label}
-          value={value}
-          selected={value === this.state.arrivalPeriod}
-          setArrivalPeriod={this.setArrivalPeriod.bind(this)}
-        />
-      );
-    });
-
-    const environments = User.ENVIRONMENTS.map((label) => {
-      return (
-        <Environment
-          key={label}
-          label={label}
-          active={label === this.state.environment}
-        />
-      );
-    });
-
-    const {persist} = this.state;
-    const persistSwitch = (
-      <Switch
-        defaultChecked={persist}
-        onClick={() => this.setPersist(!persist)}
-      />
-    );
 
     /* ----------  Main Structure  ---------- */
 
     return (
       <div className='app'>
-        <section>
-          <CellsTitle>Date of Birth</CellsTitle>
-          <Form>
-            <FormCell select id='date-of-birth'>
-              <CellHeader id='display-date'>
-                {dateString(this.state.dateOfBirth, true)}
-              </CellHeader>
+          {App.questions.map((question, questionIndex) => {
+            return (
+              <section key={`Question_${questionIndex}`}>
+                <CellsTitle>{question.question}</CellsTitle>
+                <Form radio>{App.answers.map((answer, answerIndex) => {
+                  return (
+                    <Answer
+                      key={`Answer_${answerIndex}`}
+                      title={answer}
+                      selected={false}
+                      setAnswer={() => this.setAnswer(question, answerIndex)}
+                    />
+                  );
+                })}</Form>
+              </section>
+            );
+          })}
 
-              <CellBody>
-                <input
-                  id='datepicker'
-                  type='date'
-                  required='required'
-                  value={this.state.dateOfBirth}
-                  onChange={(event) => this.setDateOfBirth(event.target.value)}
-                />
-              </CellBody>
-            </FormCell>
-          </Form>
-        </section>
-
-        <section>
-          <CellsTitle>Preferred Gift Type</CellsTitle>
-          <Form radio id='gift-type'>{giftCategories}</Form>
-        </section>
-
-        <section>
-          <CellsTitle>What is your current environment like?</CellsTitle>
-          <div id='env-slider'>
-            <Slider
-              min={0}
-              max={2}
-              step={1}
-              defaultValue={ENVIRONMENTS.indexOf(this.state.environment)}
-              showValue={false}
-              onChange={this.setEnvironment.bind(this)}
-            />
-            {environments}
-          </div>
-        </section>
-
-        <section>
-          <CellsTitle>What are your top skin concerns?</CellsTitle>
-          <Form checkbox>{skinTypes}</Form>
-        </section>
-
-        <section id='arrival-periods'>
-          <CellsTitle>New Arrivals</CellsTitle>
-          <Form radio id='arrivalPeriod'>{arrivalPeriods}</Form>
-        </section>
-
-        <section>
-          <Form>
-            <FormCell switch>
-              <CellBody>Save this info for next time</CellBody>
-              <CellFooter>{persistSwitch}</CellFooter>
-            </FormCell>
-          </Form>
-        </section>
         <ButtonArea className='see-options'>
-          <Button onClick={() => this.pushData()}>See Gift Options</Button>
+          <Button onClick={() => this.pushData()}>Answer questions</Button>
         </ButtonArea>
       </div>
     );

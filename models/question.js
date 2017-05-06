@@ -6,19 +6,26 @@
  */
 
 /**
- * Gift Model
+ * Question Model
  *
- * @class Gift
+ * @class Question
  */
-export default class Gift {
+export default class Question {
   /**
-   * @property {Array.<string>} - Available gift categories
+   * @property {Array.<string>} - Available question categories
    */
+
   static CATEGORIES = [
-    'moisturizer',
-    'cleanser',
-    'mask',
-    'lipTreatment',
+    'selfdirection',
+    'benevolence',
+    'universalism',
+    'stimulaton',
+    'hedonism',
+    'achievement',
+    'power',
+    'security',
+    'conformity',
+    'tradition',
   ];
 
   /**
@@ -32,11 +39,10 @@ export default class Gift {
    * @param {string} description - Description of the gift.
    * @param {string} category - Category of this gift (`Gift.CATEGORIES`).
    */
-  constructor(id, name, images, description, category) {
+  constructor(id, question, value = false, category) {
     this.id = id;
-    this.name = name;
-    this.images = images;
-    this.description = description;
+    this.question = question;
+    this.value = value;
     this.category = category;
   }
 }
