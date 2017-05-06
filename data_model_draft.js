@@ -22,6 +22,7 @@ let dietCommonality = {
 // Value Statement
 let benevolenceValueStatement = {
   id: 'e616fe83-6605-4b7e-94a0-428b5f4eb69b',
+  text: 'It\'s very important to ${HIM_HER} to help people around ${HIM_HER}. ${HE_SHE} wants to care for other people.',
   trait: 'benevolence', // "poor mans enum" can be one of the 10 traits, universalism, power etc.
   index: 12 // The order which the questions should be asked the user, partially
             // to make the data more deterministic, but also to not "prime" the user
@@ -31,7 +32,7 @@ let benevolenceValueStatement = {
 // Answers
 let someValueStatementAnswer = {
   user_id: '4c84e785-35ca-45a6-9df1-0b85f16ef1e2',
-  value_statement_id: 'e616fe83-6605-4b7e-94a0-428b5f4eb69b',
+  value_statement_id: 'e616fe83-6605-4b7e-94a0-428b5f4eb69b', // <- refers to benevolence value statement above
   
   answer: 3 /*
   6= very much like me
