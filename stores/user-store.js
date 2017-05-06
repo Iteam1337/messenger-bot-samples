@@ -29,6 +29,18 @@ class UserStore extends Store {
     this.set(props.id, user);
     return user;
   }
+
+  updateAnswersForQuestions(userId, questions) {
+    console.log('updateAnswersForQuestions', userId);
+    const user = this.get(userId);
+
+    questions.forEach((question) => {
+      user.answers[question.id] = question.value;
+    });
+  }
+
+  // compareUserAnswers(userId1, userId2) {
+  // }
 }
 
 // Initialize the global user store.

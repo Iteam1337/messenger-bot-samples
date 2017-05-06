@@ -44,17 +44,18 @@ export default class User {
       id,
       gender,
       questions,
+      answers,
     } = Object.assign({}, User.DEFAULT_ATTRIBUTES, attributes);
 
     this.id = id;
     this.gender = gender;
     this.questions = questions;
+    this.answers = answers;
     this.isTalkingToMatch = false;
   }
 
   setMatch(matchId) {
-    this.matchId = matchId
-    this.isTalkingToMatch = true
+    this.matchId = matchId;
+    this.isTalkingToMatch = true;
   }
-
 }

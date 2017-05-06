@@ -10,7 +10,7 @@ import express from 'express';
 
 // ===== MESSENGER =============================================================
 import sendApi from '../messenger-api-helpers/send';
-import receiveApi from '../messenger-api-helpers/receive';
+// import receiveApi from '../messenger-api-helpers/receive';
 
 // ===== STORES ================================================================
 import UserStore from '../stores/user-store';
@@ -31,6 +31,7 @@ router.get('/:userID', ({params: {userID}}, res) => {
 
 router.get('/:userID/:questionPackId',
   ({params: {userID, questionPackId}}, res) => {
+    console.log('GET', userID, questionPackId);
     const user = UserStore.get(userID) || UserStore.insert({id: userID});
     user.questions = QuestionStore.getFromPackId(questionPackId);
     const userJSON = JSON.stringify(user);
@@ -46,25 +47,15 @@ router.get('/:userID/:questionPackId',
  * and store a user's preferences if `persist` if selected (idempotent)
  */
 router.put('/:userID', ({body, params: {userID}}, res) => {
-  UserStore.insert({...body, id: userID});
-
-  const userJSON = JSON.stringify({...body, userID});
-  console.log(`PUT User response: ${userJSON}`);
+  console.log(`PUT User response: ${body}`);
 
   res.sendStatus(204);
 
-  sendApi.sendPreferencesChangedMessage(userID);
+  UserStore.updateAnswersForQuestions(userID, body.questions);
+
+  console.log('USER', UserStore.get(userID));
+
+  sendApi.sendAnsweredQuestionsMessage(userID);
 });
-
-/**
- * Update a users selected gift,
- */
-router.put('/:userID/questions/:question',
-  ({params: {userID, giftID}}, res) => {
-    console.log('PUT User Gift response:', {userID, giftID});
-
-    res.sendStatus(204);
-    receiveApi.handleNewGiftSelected(userID, giftID);
-  });
 
 export default router;

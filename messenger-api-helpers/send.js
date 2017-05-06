@@ -70,7 +70,17 @@ const sendReadReceipt = (recipientId) => {
   api.callMessagesAPI(messageData);
 };
 
+const sendAnswerQuestionsMessage = (recipientId, questionsIndex) => {
+  sendMessageObject(
+    recipientId,
+    [
+      messages.answerQuestionsButton(recipientId, questionsIndex),
+    ]
+  );
+};
+
 export default {
   sendMessage,
   sendReadReceipt,
+  sendAnswerQuestionsMessage,
 };

@@ -128,7 +128,6 @@ export default class App extends React.PureComponent {
   // Format state for easy printing or transmission
   jsonState() {
     return JSON.stringify({
-      ...this.state,
       questions: [...this.state.questions],
     });
   }
