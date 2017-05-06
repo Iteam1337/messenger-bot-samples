@@ -26,15 +26,15 @@ const SERVER_URL = process.env.SERVER_URL;
  * Button for displaying the preferences menu inside a webview
  */
 
-const questionsButtons = ['0', '1', '2'].map((id) => {
+const answerQuestionButton = (userId, questionPackId) => {
   return {
     type: 'web_url',
-    title: `Question pack ${id}`,
-    url: `${SERVER_URL}/${id}`,
+    title: `Question pack ${questionPackId}`,
+    url: `${SERVER_URL}/${userId}/${questionPackId}`,
     webview_height_ratio: 'tall',
     messenger_extensions: true,
   };
-});
+};
 
 /**
  * The persistent menu for users to use.
@@ -42,7 +42,7 @@ const questionsButtons = ['0', '1', '2'].map((id) => {
 const persistentMenu = {
   setting_type: 'call_to_actions',
   thread_state: 'existing_thread',
-  call_to_actions: questionsButtons,
+  call_to_actions: [],
 };
 
 /**
@@ -61,7 +61,7 @@ const getStarted = {
 };
 
 export default {
-  questionsButtons,
+  answerQuestionButton,
   persistentMenu,
   getStarted,
 };
