@@ -25,27 +25,30 @@ const getUser = (senderId) => {
 };
 
 const handleFindAMatch = (user) => {
-  // get a match
-  const otherUser = UserStore.getAnyOther(user.senderId);
-
+  //get a match
+  const otherUser = UserStore.getAnyOther(user.id);
+  
   if (!otherUser) {
     console.log('No other user found');
     sendApi.sendMessage(user.id, 'Searching for your opposite');
 
     return false;
   }
+  else {
+    console.log('User found');
+    console.log('My id', user.id);
+    console.log('Other id', otherUser.id);
 
-  console.log('User found', otherUser);
+    //set a match
+    user.setMatch(otherUser.id);
+    otherUser.setMatch(user.id);
 
-    // set a match
-  user.setMatch(otherUser.id);
-  otherUser.setMatch(user.id);
-
-    // send message to both
-  sendApi.sendMessage(user.id, 'Wow! You have a match! Please introduce yourself :)');
-  sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Please introduce yourself :)');
-
-  return true;
+    //send message to both
+    sendApi.sendMessage(user.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
+    sendApi.sendMessage(otherUser.id, 'Wow! You have a match! Why don\'t you introduce yourself? :)');
+    
+    return true;
+  }
 };
 
 const proxyMessage = (user, message) => {
@@ -92,20 +95,22 @@ const handleReceiveMessage = (event) => {
   const message = event.message;
   const senderId = event.sender.id;
 
-  console.log('received message', message.text);
-
   // It's good practice to send the user a read receipt so they know
   // the bot has seen the message. This can prevent a user
   // spamming the bot if the requests take some time to return.
   sendApi.sendReadReceipt(senderId);
 
   const user = getUser(senderId);
+  console.log('user', user);
+
   if (user.isTalkingToMatch) {
+    console.log(senderId + " is talking to match. Proxy message: " + message.text);
     if (message) {
       // send to the other part
       proxyMessage(user, message.text);
     }
   } else {
+    console.log(senderId + " don't have a match. Getting one...");
     handleFindAMatch(user);
   }
 

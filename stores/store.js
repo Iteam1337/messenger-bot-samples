@@ -20,8 +20,9 @@ export default class Store {
     var iterator = this.data.values();
 
     for (var user of iterator) {
-      // console.log('found user', user);
-      if (user.id != id) {
+
+      console.log('user', user);
+      if (user.id != id && !user.matchId) {
         // console.log('Found user', user);
         return user;
       }
