@@ -66,40 +66,27 @@ const sendReadReceipt = (recipientId) => {
   api.callMessagesAPI(messageData);
 };
 
-// Send the initial message telling the user about the promotion.
-const sendHelloRewardMessage = (recipientId) =>
-  sendMessage(recipientId, messages.helloRewardMessage);
-
-// Send a message indicating to a user that their preferences have changed.
-const sendPreferencesChangedMessage = (recipientId) => {
+const sendWelcomeMessage = (recipientId) => {
   sendMessage(
     recipientId,
     [
-      messages.preferencesUpdatedMessage,
-      messages.currentGiftText,
-      messages.currentGiftButton(recipientId),
-    ]);
+      'welcome',
+    ],
+  );
 };
 
-// Send a message displaying the gifts a user can choose from.
-const sendChooseGiftMessage = (recipientId) => {
+const sendAnswersChangedMessage = (recipientId) => {
   sendMessage(
     recipientId,
     [
-      messages.giftOptionsText,
-      messages.giftOptionsCarosel(recipientId),
-    ]);
+      messages.sendAnswersChangedMessage,
+    ],
+  );
 };
-
-// Send a message that a users preffered gift has changed.
-const sendGiftChangedMessage = (recipientId) =>
-  sendMessage(recipientId, messages.giftChangedMessage(recipientId));
 
 export default {
   sendMessage,
   sendReadReceipt,
-  sendHelloRewardMessage,
-  sendPreferencesChangedMessage,
-  sendChooseGiftMessage,
-  sendGiftChangedMessage,
+  sendAnswersChangedMessage,
+  sendWelcomeMessage,
 };

@@ -11,13 +11,6 @@ import sendApi from './send';
 // ===== STORES ================================================================
 import UserStore from '../stores/user-store';
 
-// Updates a users preferred gift, then notifies them of the change.
-const handleNewGiftSelected = (senderId, giftId) => {
-  const user = UserStore.get(senderId);
-  user.setPreferedGift(giftId);
-  sendApi.sendGiftChangedMessage(senderId);
-};
-
 /*
  * handleReceivePostback — Postback event handler triggered by a postback
  * action you, the developer, specify on a button in a template. Read more at:
@@ -37,14 +30,8 @@ const handleReceivePostback = (event) => {
 
   // perform an action based on the type of payload received
   switch (type) {
-  case 'CHANGE_GIFT':
-    sendApi.sendChooseGiftMessage(senderId);
-    break;
-  case 'CHOOSE_GIFT':
-    handleNewGiftSelected(senderId, data.giftId);
-    break;
   case 'GET_STARTED':
-    sendApi.sendHelloRewardMessage(senderId);
+    sendApi.sendWelcomeMessage(senderId);
     break;
   default:
     console.error(`Unknown Postback called: ${type}`);
@@ -73,5 +60,4 @@ const handleReceiveMessage = (event) => {
 export default {
   handleReceivePostback,
   handleReceiveMessage,
-  handleNewGiftSelected,
 };
