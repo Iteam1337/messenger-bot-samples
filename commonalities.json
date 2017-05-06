@@ -20,7 +20,7 @@
     "story_invitation": "Tell a story about how your experiences in the military has affected you.",
     "id": "73acdbeb-2dab-484f-9e48-705e6ecc23aa",
     "statements": {
-      "XXXX": {
+      "a8234203-2cb4-4f95-87b8-e81640327651": {
         "text": "I have served in the military",
         "weight": 3
       }
@@ -109,5 +109,237 @@
         "weight": 2
       }
     }
+  }, {
+    "story_invitation": "Would you like to share a story about a parenting challenge you've had?",
+    "id": "90864f52-fa1c-4781-852d-d39f1ede7ddf",
+    "statements": {
+      "7fa09b3a-658c-4dd4-948e-406960665d8e": {
+        "text": "I am a single parent",
+        "weight": 3
+      },
+      "ef9e1669-262a-48eb-8ea3-f3341315f2cd": {
+        "text": "I am father of a daughter",
+        "weight": 2
+      },
+      "6ccdb51b-eaa0-4b02-aec9-3b1a7ecd93b5": {
+        "text": "I am mother of a daughter",
+        "weight": 2
+      },
+      "90b55305-b002-4e82-845c-7ba2849da7d7": {
+        "text": "I am father of a son",
+        "weight": 2
+      },
+      "10a6975e-90f2-42e2-a371-5bec9e449051": {
+        "text": "I am mother of a son",
+        "weight": 2
+      },
+      "fb9f1524-fb40-497f-9f81-9131c2fe26e0": {
+        "text": "I have more than three children",
+        "weight": 3
+      },
+      "d73c4d2b-7125-4b4e-a897-138c9ced5b8c": {
+        "text": "I became a parent unusually young",
+        "weight": 3
+      }
+    }
+  }, {
+    "story_invitation": "Can one of you share the story of how you become religious?",
+    "id": "0d67c34d-c00f-4e4b-9ad7-65025158a295",
+    "statements": {
+      "0d67c34d-c00f-4e4b-9ad7-65025158a295": {
+        "text": "I am religious",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you share a story about what it was like to be you in school?",
+    "id": "f369027f-5340-4d29-bd8e-9de6bcda2040",
+    "statements": {
+      "6f8742da-f6c8-4f9f-94c1-9a8b4962463f": {
+        "text": "I was bullied in school",
+        "weight": 2
+      },
+      "dff9f56c-41b7-4775-baa3-edfb4537a045": {
+        "text": "I was popular in school",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you share a story about what it was like to be you in school?",
+    "id": "98e8e36f-5602-480e-bcb8-19fd955d5e4b",
+    "statements": {
+      "eba394fb-bf42-4ba3-9ca7-ec27cbfcc384": {
+        "text": "I was bullied in school",
+        "weight": 1
+      },
+      "32ce92bf-2b40-45a1-aefd-9bfb51ab8e97": {
+        "text": "I was popular in school",
+        "weight": 2
+      },
+      "4a3a1740-2fad-4d75-ac3d-679d41595209": {
+        "text": "I was a bully in school",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you tell a story about your marriage?",
+    "id": "63cfd2fd-e38d-4a71-ad0f-ab1284677a05",
+    "statements": {
+      "ccbeba1e-b8be-40cd-9071-3b6ca347a8f4": {
+        "text": "I am married",
+        "weight": 1
+      },
+      "06cc538d-0a88-4d8f-b17d-f4db727ce478": {
+        "text": "I married young",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you tell a story about your family, your relationship with them, and how it affects you?",
+    "id": "3aee0f7c-9b9c-46f4-9949-302964e9e2b6",
+    "statements": {
+      "6fd305ce-c351-4433-8d05-21f07c230657": {
+        "text": "I look forward to family gatherings",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you talk about what you know from your life about addiction?",
+    "id": "6b2f85db-73ae-4700-a064-88780c073af7",
+    "statements": {
+      "aeaa0c4c-082b-42ca-a972-72e32940d564": {
+        "text": "I have suffered from addiction",
+        "weight": 3
+      },
+      "d3a73d17-c50d-4e4a-8f39-309516c627da": {
+        "text": "A person close to me have suffered from addiction",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you share a story from your life about getting in trouble with the law?",
+    "id": "aaffb2e6-cee3-47f6-aca7-d96557383bb4",
+    "statements": {
+      "3714691a-4780-4cb8-b8c6-822be47fa0a6": {
+        "text": "I have commited a serious crime",
+        "weight": 3
+      },
+      "e4538dd9-52b3-44dc-800d-ad65125ac33c": {
+        "text": "A person close to me have commited a serious crime",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you share a story about about a life change you've made and what challenges it had?",
+    "id": "040f622a-5728-47c1-9c83-cab1c6aa849f",
+    "statements": {
+      "a769605c-560a-493b-a59e-80918b79dc77": {
+        "text": "I have made a very big change in my life",
+        "weight": 2
+      },
+      "65daa321-6a7f-4b44-8d32-630e14250947": {
+        "text": "I have moved to another country",
+        "weight": 3
+      },
+      "d7115f22-ff2b-4e37-8d88-01d0105c89fa": {
+        "text": "I have moved to another country with my family",
+        "weight": 3
+      }
+    }
+  }, {
+    "story_invitation": "Can you talk about your relationship to your work?",
+    "id": "bf38f78e-4670-464a-bb22-308e557a4576",
+    "statements": {
+      "23c51acf-def2-44c3-8026-4014df7b7cd8": {
+        "text": "I work unusually long hours",
+        "weight": 2
+      }, "7ca69bcf-3ae3-43fd-a2c9-0ea76ef1dd73": {
+        "text": "I am very passionate about my work",
+        "weight": 3
+      }, "cb4115f9-cc40-4ff9-8b57-4a3f3b6c6de3": {
+        "text": "I have my dream job",
+        "weight": 3
+      }, "8c0e7fc0-4cf1-410d-b821-bf79b2be9cfe": {
+        "text": "I strongly dislike my job",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you tell a story about how a person close to you made your life difficult?",
+    "id": "f3186878-2a6d-4dd0-83fe-153151b1a459",
+    "statements": {
+      "e4917894-4a96-41ba-ad75-c72196c3856c": {
+        "text": "I have experienced physical or emotional abuse from someone close to me",
+        "weight": 3
+      }
+    }
+  }, {
+    "story_invitation": "Can you talk about how an illness have affected your life?",
+    "id": "2d7b0e7d-4d32-48f9-a405-1259c66426d6",
+    "statements": {
+      "e38eabdf-ec63-40c4-8c7a-f1c8ba7b2098": {
+        "text": "Someone close to me have a serious disease",
+        "weight": 2
+      },
+      "eca611f4-4583-48ec-aa45-4730922c7e05": {
+        "text": "I have a serious disease",
+        "weight": 3
+      },
+      "eb844e18-47c5-4fbc-bfbe-8ce23d1ff6dd": {
+        "text": "I have a mental illness",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you talk about how having a disability has affected you as a person?",
+    "id": "af426930-92fe-44c0-bfaf-6b34e705d8ce",
+    "statements": {
+      "8bae57aa-3a47-483f-a64b-153d44c3c899": {
+        "text": "I have a disability",
+        "weight": 2
+      }
+    }
+  }, {
+    "story_invitation": "Can you tell a story from your life involving a serious accident and how it impacted you or someone close to you?",
+    "id": "075e9aab-7fcd-4690-ad3e-ce397baa5598",
+    "statements": {
+      "47ffa521-86e5-41cf-866f-f302c5a8c917": {
+        "text": "I have been in a serious accident",
+        "weight": 2
+      },
+      "3592abe2-3ba1-4e9d-81e5-1581974ad9d8": {
+        "text": "Someone close to me has been in a serious accident",
+        "weight": 2
+      }
+    }
+  }, 
+  {
+    "story_invitation": "Would you like to share a story about something that you've hidden from your parents?",
+    "id": "cd32c459-c0b7-4c2a-b00d-d43162d48b63",
+    "statements": {
+      "d9cb9750-577b-4deb-9982-99a9cf2c62f3": {
+        "text": "Are there parts of your life that you've at some point hidden from your parents?",
+        "weight": 3
+      }
+    }
+  },{
+    "story_invitation": "Can you share how losing someone close to you have affected you?",
+    "id": "5fd30334-6f55-49e2-8463-7ef51d1c7f51",
+    "statements": {
+      "19bd3cb4-4d40-497e-82f5-0a23ac5c0e63": {
+        "text": "Someone close to me has died",
+        "weight": 3
+      }
+    }
+  },{
+    "story_invitation": "Can one of you share the story of why you are not able to work?",
+    "id": "7d9145e7-81e4-462f-b3cb-2b03b7968967",
+    "statements": {
+      "d9ede2fa-4a6a-4c52-986a-bef508b139b6": {
+        "text": "I am not in the workforce because I am unable to work",
+        "weight": 3
+      }
+    }
   }
+
 ]
