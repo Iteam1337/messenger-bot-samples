@@ -92,11 +92,10 @@ export default class App extends React.PureComponent {
           `Unable to fetch user data for User ${this.props.userId}'`
         );
       }).then((jsonResponse) => {
-        console.log(`Data fetched successfully: ${jsonResponse}`);
+        console.log(`Data fetched successfully: ${JSON.stringify(jsonResponse, null, 2)}`);
 
         this.setState({
           ...jsonResponse,
-          questions: new Set(jsonResponse.questions),
         });
       }).catch((err) => console.error('Error pulling data', err));
   }
@@ -136,9 +135,22 @@ export default class App extends React.PureComponent {
 
   /* ----------  State Handlers  ---------- */
 
-  setAnswer(question, index) {
-    console.log(`Set Answer: ${index}`);
-    this.setState({index});
+  setAnswer(questionIndex, value) {
+    console.log(`Set Answer: ${value} for question ${questionIndex}`);
+    const questions = this.state.questions;
+    questions[questionIndex].value = value;
+
+    this.setState({
+      questions,
+    });
+    this.forceUpdate();
+  }
+
+  replacePlaceholder(text, gender) {
+    return text
+      .split('${HE_SHE}').join(gender === 'male' ? 'he' : 'she')
+      .split('${HIS_HER}').join(gender === 'male' ? 'his' : 'her')
+      .split('${HIM_HER}').join(gender === 'male' ? 'him' : 'her');
   }
 
   /* =============================================
@@ -155,29 +167,33 @@ export default class App extends React.PureComponent {
    *
    */
   render() {
-    /**
-     * If waiting for data, just show the loading spinner
-     * and skip the rest of this function
-     */
-    if (!this.state.questions) {
+    const {
+      gender,
+      questions,
+    } = this.state;
+
+    if (!questions) {
       return <Loading />;
     }
 
+    console.log(this.state);
     /* ----------  Main Structure  ---------- */
-
     return (
       <div className='app'>
-          {App.questions.map((question, questionIndex) => {
+          {questions.map((question, questionIndex) => {
             return (
               <section key={`Question_${questionIndex}`}>
-                <CellsTitle>{question.question}</CellsTitle>
+                <CellsTitle>
+                  {this.replacePlaceholder(question.question, gender)}
+                </CellsTitle>
                 <Form radio>{App.answers.map((answer, answerIndex) => {
                   return (
                     <Answer
                       key={`Answer_${answerIndex}`}
                       title={answer}
-                      selected={false}
-                      setAnswer={() => this.setAnswer(question, answerIndex)}
+                      selected={question.value === answerIndex}
+                      setAnswer={() =>
+                        this.setAnswer(questionIndex, answerIndex)}
                     />
                   );
                 })}</Form>

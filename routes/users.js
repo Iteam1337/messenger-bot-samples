@@ -33,9 +33,7 @@ router.get('/:userID', ({params: {userID}}, res) => {
  * and store a user's preferences if `persist` if selected (idempotent)
  */
 router.put('/:userID', ({body, params: {userID}}, res) => {
-  if (body.persist) {
-    UserStore.insert({...body, id: userID});
-  }
+  UserStore.insert({...body, id: userID});
 
   const userJSON = JSON.stringify({...body, userID});
   console.log(`PUT User response: ${userJSON}`);
@@ -48,11 +46,12 @@ router.put('/:userID', ({body, params: {userID}}, res) => {
 /**
  * Update a users selected gift,
  */
-router.put('/:userID/question/:question', ({params: {userID, giftID}}, res) => {
-  console.log('PUT User Gift response:', {userID, giftID});
+router.put('/:userID/questions/:question',
+  ({params: {userID, giftID}}, res) => {
+    console.log('PUT User Gift response:', {userID, giftID});
 
-  res.sendStatus(204);
-  receiveApi.handleNewGiftSelected(userID, giftID);
-});
+    res.sendStatus(204);
+    receiveApi.handleNewGiftSelected(userID, giftID);
+  });
 
 export default router;

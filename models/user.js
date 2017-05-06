@@ -6,10 +6,10 @@
  */
 
 // ===== MODELS ================================================================
-// import Question from './question';
+import Question from './question';
 
 // ===== STORES ================================================================
-// import QuestionStore from '../stores/question-store';
+import QuestionStore from '../stores/question-store';
 
 /**
  * User Model
@@ -22,7 +22,10 @@ export default class User {
    * @property {Array.<string>} - Defaults attributes for users
    */
   static DEFAULT_ATTRIBUTES = {
-
+    gender: {
+    },
+    questions: QuestionStore.getByCategoryId(Question.CATEGORIES[1]),
+    answers: {},
   };
 
   /* eslint-disable max-len */
@@ -39,10 +42,12 @@ export default class User {
   constructor(attributes) {
     const {
       id,
+      gender,
       questions,
     } = Object.assign({}, User.DEFAULT_ATTRIBUTES, attributes);
 
     this.id = id;
+    this.gender = gender;
     this.questions = questions;
   }
 }
