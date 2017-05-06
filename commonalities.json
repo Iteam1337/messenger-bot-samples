@@ -109,14 +109,5 @@
         "weight": 2
       }
     }
-  }/*, {
-    "story_invitation": "",
-    "id": "YYY",
-    "statements": {
-      "XXXX": {
-        "text": "",
-        "weight": 0
-      }
-    }
-  }*/
+  }
 ]
