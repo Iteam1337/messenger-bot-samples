@@ -45,7 +45,7 @@ class QuestionStore extends Store {
       .filter((question) => question.category === categoryId);
   }
 
-  getByPackId(packId) {
+  getFromPackId(packId) {
     /**
      * Maps don't have a filter method (nor map, reduce, and so on)
      * Rather than write our own, here we convert to an Array

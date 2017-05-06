@@ -25,15 +25,13 @@ import 'react-weui/lib/react-weui.min.css';
 import '../public/style.css';
 
 // Simple initializer for attaching the Preferences App to the DOM
-window.attachApp = (userId, gift) => {
+window.attachApp = (userId, questionPackId) => {
   /**
    * MessengerExtensions are only available on iOS and Android,
    * so show an error page if MessengerExtensions was unable to start
    */
   if (userId) {
-    const app = gift
-      ? <Gift {...gift} userId={userId} />
-      : <App userId={userId} />;
+    const app = <App userId={userId} questionPackId={questionPackId} />;
     ReactDOM.render(app, document.getElementById('content'));
   } else {
     ReactDOM.render(<Oops />, document.getElementById('content'));

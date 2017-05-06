@@ -57,7 +57,6 @@ app.use(logger('dev'));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/questions', questions);
 app.use('/webhook', webhooks);
 
 /* ----------  Errors  ---------- */

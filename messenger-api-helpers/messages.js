@@ -22,17 +22,28 @@
 
 const SERVER_URL = process.env.SERVER_URL;
 
+console.log('SERVER_URL', SERVER_URL);
 /**
  * Button for displaying the preferences menu inside a webview
  */
 
-const answerQuestionButton = (userId, questionPackId) => {
+const answerQuestionsButton = (userId, questionPackId) => {
   return {
-    type: 'web_url',
-    title: `Question pack ${questionPackId}`,
-    url: `${SERVER_URL}/${userId}/${questionPackId}`,
-    webview_height_ratio: 'tall',
-    messenger_extensions: true,
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text: 'Let me know somethings about you to get us started',
+        buttons: [
+          {
+            type: 'web_url',
+            url: `${SERVER_URL}/${userId}/${questionPackId}`,
+            title: 'Lets do it!',
+            webview_height_ratio: 'tall',
+          },
+        ],
+      },
+    },
   };
 };
 
@@ -61,7 +72,7 @@ const getStarted = {
 };
 
 export default {
-  answerQuestionButton,
+  answerQuestionsButton,
   persistentMenu,
   getStarted,
 };
